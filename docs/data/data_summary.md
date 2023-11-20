@@ -46,21 +46,28 @@ Based on the exploratory analysis, we have the following summary which gives us 
 
 ## Target Variable
 
-The purpose of the present study is to explore distinct ML algorithms to predict the increase of **average temperature**, due to distinct agri-food activities around the globe since 1990 until 2020. 
+The purpose of the present study is to explore distinct ML algorithms to predict the increase of **average temperature**, due to distinct agri-food activities around the globe from 1990 until 2020. 
 
 
 ## Individual Variables
 
-1. The following visualization enables us to observe the change of average temperature since 1990: 
+1. The following visualization enables us to observe the change in average temperature since 1990: 
 
 **File:** `Average_Temperature_Change.png`
 
-2. Next, we applied a `MaxMin()` transformation employing the scikitlearn `MinMaxScaler` utility to visualize the relationship between population, CO2 emissions and Temperature change since 1990.
+2. Next, we applied a `MaxMin()` transformation employing the scikitlearn `MinMaxScaler` utility to visualize the relationship between population, CO2 emissions, and Temperature change since 1990.
 
    **File:** `Population_Change_Vs_CO2_Emissions_&_Temperature.png`
 
+3. In order to visualize the evolution of total emissions of CO2 (in millions of tones) related to the change of temperature from 1990 to 2020, we created a plot that relates these two variables by employing a basic transformation of the data (each total emission value was divided by 1.0e+06) to obtain the following graph:
 
-## Ranking de variables
+   **File:** `Global_Average_Temperature_Vs_Tital_Annual_Emissions_per_year.png` 
+
+4. The last visualization is related to each activity and its contribution to CO2 emissions globally:
+
+**File:** `Mean_CO2_emmissions_by_activity.png` 
+
+## Variables Ranking
 
 En esta sección se presenta un ranking de las variables más importantes para predecir la variable objetivo. Se utilizan técnicas como la correlación, el análisis de componentes principales (PCA) o la importancia de las variables en un modelo de aprendizaje automático.
 
