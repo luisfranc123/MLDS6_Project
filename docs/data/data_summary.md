@@ -55,17 +55,25 @@ The purpose of the present study is to explore distinct ML algorithms to predict
 
 **File:** `Average_Temperature_Change.png`
 
+According to this plot, we can observe an upward trend in the global average temperature over time (from 1990 to 2020).
+
 2. Next, we applied a `MaxMin()` transformation employing the scikitlearn `MinMaxScaler` utility to visualize the relationship between population, CO2 emissions, and Temperature change since 1990.
 
    **File:** `Population_Change_Vs_CO2_Emissions_&_Temperature.png`
 
-3. In order to visualize the evolution of total emissions of CO2 (in millions of tones) related to the change of temperature from 1990 to 2020, we created a plot that relates these two variables by employing a basic transformation of the data (each total emission value was divided by 1.0e+06) to obtain the following graph:
+Here, it seems that there is a linear positive relationship between the increase in urban population, total CO2 emissions, and the increase in  temperature.
+
+3. In order to visualize the evolution of total emissions of CO2 (in millions of tones) related to the change in temperature from 1990 to 2020, we created a plot that relates these two variables by employing a basic transformation of the data (each total emission value was divided by 1.0e+06) to obtain the following graph:
+
+Here, the plot displays a constant increase in average temperature versus total emissions of CO2 (in millions of tons) across time. 
 
    **File:** `Global_Average_Temperature_Vs_Tital_Annual_Emissions_per_year.png` 
 
 4. The last visualization is related to each activity and its contribution to CO2 emissions globally:
 
 **File:** `Mean_CO2_emmissions_by_activity.png` 
+
+Finally, we can observe here that the activity, by far, that emits the greatest amount of CO2 into the atmosphere is IPPU, which corresponds to *emissions from industrial processes and product use.*
 
 ## Variables Ranking
 
