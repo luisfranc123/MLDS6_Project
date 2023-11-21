@@ -53,7 +53,7 @@ The purpose of the present study is to explore distinct ML algorithms to predict
 
 1. The following visualization enables us to observe the change in average temperature since 1990: 
 
-**File:** `Average_Temperature_Change.png`
+   **File:** `Average_Temperature_Change.png`
 
 According to this plot, we can observe an upward trend in the global average temperature over time (from 1990 to 2020).
 
@@ -61,24 +61,32 @@ According to this plot, we can observe an upward trend in the global average tem
 
    **File:** `Population_Change_Vs_CO2_Emissions_&_Temperature.png`
 
-Here, it seems that there is a linear positive relationship between the increase in urban population, total CO2 emissions, and the increase in  temperature.
+Here, it seems that there is a linear positive relationship between the increase in urban population, total CO2 emissions, and the increase in  temperature. On the contrary, there has been a dramatic drop in the rural population since 1990, which suggests a massive migration of people from rural areas to the big urban centers. 
 
-3. In order to visualize the evolution of total emissions of CO2 (in millions of tones) related to the change in temperature from 1990 to 2020, we created a plot that relates these two variables by employing a basic transformation of the data (each total emission value was divided by 1.0e+06) to obtain the following graph:
+3. To visualize the evolution of total emissions of CO2 (in millions of tones) related to the change in temperature from 1990 to 2020, we created a plot that displays the relationship between these two variables by employing a transformation of the data (each total emission value was divided by 1.0e+06) to obtain the following graph:
 
-Here, the plot displays a constant increase in average temperature versus total emissions of CO2 (in millions of tons) across time. 
 
    **File:** `Global_Average_Temperature_Vs_Tital_Annual_Emissions_per_year.png` 
 
+Here, the plot displays a constant increase in average temperature versus total emissions of CO2 (in millions of tons) across time. 
+
 4. The last visualization is related to each activity and its contribution to CO2 emissions globally:
 
-**File:** `Mean_CO2_emmissions_by_activity.png` 
+   **File:** `Mean_CO2_emmissions_by_activity.png` 
 
 Finally, we can observe here that the activity, by far, that emits the greatest amount of CO2 into the atmosphere is IPPU, which corresponds to *emissions from industrial processes and product use.*
 
-## Variables Ranking
+## Variables Ranking and their Relationship
 
-En esta sección se presenta un ranking de las variables más importantes para predecir la variable objetivo. Se utilizan técnicas como la correlación, el análisis de componentes principales (PCA) o la importancia de las variables en un modelo de aprendizaje automático.
+To explore the correlation between each explanatory variable with the target variable (**Average Temperature °C**) we grouped the data as follows: 
 
-## Relación entre variables explicativas y variable objetivo
+- **Total Fire-related Emissions:** *Savanna fires, Forest fires, Fires in organic soils, Fires in humid tropical forests.*
+- **Total Industrial Emissions:** *Pesticides Manufacturing, Food Transport, Food Retail, Food Packaging, Food Processing, Fertilizers Manufacturing, IPPU.*
+- **Total Cultivation Emissions:** *Crop Residues, Rice Cultivation, Drained organic soils (CO2), Manure applied to Soils, Manure left on Pasture, Manure Management.*
 
-En esta sección se presenta un análisis de la relación entre las variables explicativas y la variable objetivo. Se utilizan gráficos como la matriz de correlación y el diagrama de dispersión para entender mejor la relación entre las variables. Además, se pueden utilizar técnicas como la regresión lineal para modelar la relación entre las variables.
+We then analyzed the correlation matrix to observe the most significant relationships among the variables; we found that our target variable is poorly correlated to each type of emission, with the exception of the Year.
+Please refer to the plot `Correlation_HeatMap.png` to visualize the results. 
+
+
+
+
