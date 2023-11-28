@@ -3,7 +3,7 @@
 
 ## Model Description 
 
-We chose the XGBoost Regressor model as our baseline model due to its well-known efficiency and performance. 
+We implemented XGBoost Regressor and Random Forest Regressor approaches as our baseline models due to their well-known efficiency and performance when dealing with nonlinear multiple regression problems. 
 
 ## Input Variables
 
@@ -37,6 +37,17 @@ Mean Absolute Error (MAE), Mean Squared Error (MSE), and r_squared score.
  | 4 | dart | 0.390285 | 0.065763 | 8 | 52 | 0.248799  | 0.116976 | 0.616783 |
  | 5 | dart | 0.308206 | 0.203255 | 9 | 93 | 0.248230  | 0.117930 | 0.613659 |
  
+ Table 1: XGBoost MLFlow runs metrics and hyperparameters summary
+
+| **Model (MLFlow run)** | **max_depth** | **max_features** | **max_samples** | **n_estimators** | **mae** | **mse** | **r2_score** |
+ | ---- | ---- | ----| ---- | ---- | ---- | ---- | ---- | 
+ | 1 | 10 | 0.029473 | 0.902412 | 67 | 0.254459 | 0.124865  | 0.590938 |
+ | 2 | 10 | 0.023797 | 0.792905 | 98 | 0.257386 | 0.126889  | 0.584307 | 
+ | 3 | 10 | 0.030506 | 0.874975 | 67 | 0.257671 | 0.127655  | 0.580172 | 
+ | 4 | 10 | 0.021106 | 0.793425 | 28 | 0.259247 | 0.128151  | 0.116976 | 
+ | 5 | 9 | 0.033379 | 0.992276 | 74 | 0.259405 | 0.128517  | 0.578973 | 
+ 
+ Table 2: Random-Forest-Regressor MLFlow runs metrics and hyperparameters summary
 
 ## Results Analysis 
 
