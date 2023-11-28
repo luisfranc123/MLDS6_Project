@@ -1,39 +1,58 @@
-# Reporte del Modelo Baseline
+# Baseline Model Report
 
-Este documento contiene los resultados del modelo baseline.
 
-## Descripción del modelo
+## Model Description 
 
-El modelo baseline es el primer modelo construido y se utiliza para establecer una línea base para el rendimiento de los modelos posteriores.
+We chose the XGBoost Regressor model as our baseline model due to its well-known efficiency and performance. 
 
-## Variables de entrada
+## Input Variables
 
-Lista de las variables de entrada utilizadas en el modelo.
+- [] Features (Explanatory Variables):
+*Area, continent, Year, Savanna fires, Forest fires, Crop Residues, Rice Cultivation, Drained organic soils (CO2), Pesticides Manufacturing, Food Transport, Forestland, Net Forest conversion, Food Household  Consumption, Food Retail, On-farm Electricity Use, Food Packaging, Agrifood Systems Waste Disposal, Food Processing, Fertilizers Manufacturing, IPPU, Manure applied to Soils, Manure left on Pasture, Manure Management, Fires in organic soils, Fires in humid  tropical forests, On-farm energy use, total_emission, total_population.*
 
-## Variable objetivo
 
-Nombre de la variable objetivo utilizada en el modelo.
 
-## Evaluación del modelo
+## Target Variable
 
-### Métricas de evaluación
+- [] Target (Response Variable):
+  *Average Temperature °C.*
 
-Descripción de las métricas utilizadas para evaluar el rendimiento del modelo.
+## Model Evaluation: 
 
-### Resultados de evaluación
+### Evaluation Metrics
 
-Tabla que muestra los resultados de evaluación del modelo baseline, incluyendo las métricas de evaluación.
+As our study implements a regression model, we implemented the following metrics: 
+Mean Absolute Error (MAE), Mean Squared Error (MSE), and r_squared score.   
 
-## Análisis de los resultados
 
-Descripción de los resultados del modelo baseline, incluyendo fortalezas y debilidades del modelo.
+### Evaluation Results
+ After 30 iterations using `optuna` library, we present the results of the five best models, jointly with their optimized hyper-parameters and performance metrics. 
 
-## Conclusiones
 
-Conclusiones generales sobre el rendimiento del modelo baseline y posibles áreas de mejora.
+ | **Model (MLFlow run)** | **Booster** | **Gamma** | **Learning Rate** | **max_depth** | **n_estimators** | **mae** | **mse** | **r2_score** |
+ | ---- | ---- | ----| ---- | ---- | ---- | ---- | ---- | ---- |
+ | 1 | gbtree | 0.276061 | 0.13378 | 8 | 56 | 0.247258  | 0.114403 | 0.625213 |
+ | 2 | dart | 0.326981 | 0.147188 | 8 | 90 | 0.247697  | 0.115368 | 0.622049 |
+ | 3 | gbtree | 0.347706 | 0.223800 | 9 | 25 | 0.247682  | 0.115756 | 0.620779 |
+ | 4 | dart | 0.390285 | 0.065763 | 8 | 52 | 0.248799  | 0.116976 | 0.616783 |
+ | 5 | dart | 0.308206 | 0.203255 | 9 | 93 | 0.248230  | 0.117930 | 0.613659 |
+ 
 
-## Referencias
+## Results Analysis 
 
-Lista de referencias utilizadas para construir el modelo baseline y evaluar su rendimiento.
+We can observe that the best r2_score obtained when implementing the XRGBoost Regressor model is 0.625213, which is significantly better than the ones reported in previous models used to predict the change in the average temperature due to the aforementioned Agro-food related activities. Additionally, the hyperparameter optimization process enables us to find a better model that fits the given data. One of the advantages of this baseline model is that it progressively learns through each iteration, which represents a leap forward in terms of efficiency. However, there is still much unknown variation that cannot be explained by the model itself, therefore, further analysis needs to be done. 
 
-Espero que te sea útil esta plantilla. Recuerda que puedes adaptarla a las necesidades específicas de tu proyecto.
+
+## Conclusions
+
+This study is an attempt to understand the main Agri-food activities related to the increased trend in average temperature globally and possibly, disentangle potential insights that enable us to better formulate policies and technical-based insights that ultimately contribute to reducing the impacts of human activities on global warming. By the implementation of ML-based algorithms, such as XGBoost regressor, we might forecast and identify the activities that mainly contribute to the increased average temperature with a variance explanation of around 63%. However, further research is needed regarding socio-environmental factors that contribute to Global Warming, as there is still some unknown variation when implementing this type of approach. 
+
+
+
+## References
+
+- https://xgboost.readthedocs.io/en/stable/parameter.html
+- https://www.kaggle.com/code/alessandrolobello/deep-eda-analysis-and-ml-model-evaluation
+
+
+
