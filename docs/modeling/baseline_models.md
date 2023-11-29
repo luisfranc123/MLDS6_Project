@@ -49,7 +49,7 @@ Mean Absolute Error (MAE), Mean Squared Error (MSE), and r_squared score.
  
 **Table 2:** Random-Forest-Regressor MLFlow runs metrics and hyperparameters summary
 
-Then, we evaluated both models using the test dataset and obtained the results summarized in the following table:
+Then, we evaluated both models, *taking the optimized hyperparameters from both*, using the test dataset, and obtained the results summarized in the following table:
 
 | **Model** | **MAE** | **MSE** | **R2_Score** |
 | ---- | ---- | ---- | ---- |
