@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 
 #Missing values
 df.isna().sum()
+"""
 Area                                  0
 Year                                  0
 Savanna fires                        31
@@ -43,7 +44,7 @@ Average Temperature °C                0
 total_population                      0
 continent                          1743
 emission_per_capita                   0
-
+"""
 #Function to replace missing values using RandomForestRegressor forecasting
 def regressor_imputer(df, feature, max_depth = 6):
   df_filled = df.copy()
@@ -87,6 +88,7 @@ num_df = replace_missing(numerical, missing_list)
 
 #Just checking
 num_df.isna().sum()
+"""
 Year                               0
 Savanna fires                      0
 Forest fires                       0
@@ -119,6 +121,7 @@ total_emission                     0
 Average Temperature °C             0
 total_population                   0
 emission_per_capita                0
+"""
 
 #Preprocess categorical variables using LabelEncoder():
 from sklearn.preprocessing import LabelEncoder
