@@ -37,7 +37,7 @@ Mean Absolute Error (MAE), Mean Squared Error (MSE), and r_squared score.
  | 4 | dart | 0.390285 | 0.065763 | 8 | 52 | 0.248799  | 0.116976 | 0.616783 |
  | 5 | dart | 0.308206 | 0.203255 | 9 | 93 | 0.248230  | 0.117930 | 0.613659 |
  
- Table 1: XGBoost MLFlow runs metrics and hyperparameters summary
+**Table 1:** XGBoost MLFlow runs metrics and hyperparameters summary
 
 | **Model (MLFlow run)** | **max_depth** | **max_features** | **max_samples** | **n_estimators** | **mae** | **mse** | **r2_score** |
  | ---- | ---- | ----| ---- | ---- | ---- | ---- | ---- | 
@@ -47,7 +47,18 @@ Mean Absolute Error (MAE), Mean Squared Error (MSE), and r_squared score.
  | 4 | 10 | 0.021106 | 0.793425 | 28 | 0.259247 | 0.128151  | 0.116976 | 
  | 5 | 9 | 0.033379 | 0.992276 | 74 | 0.259405 | 0.128517  | 0.578973 | 
  
- Table 2: Random-Forest-Regressor MLFlow runs metrics and hyperparameters summary
+**Table 2:** Random-Forest-Regressor MLFlow runs metrics and hyperparameters summary
+
+Then, we evaluated both models using the test dataset and obtained the results summarized in the following table:
+
+| **Model** | **MAE** | **MSE** | **R2_Score** |
+| ---- | ---- | ---- | ---- |
+| XGBoost R. | 0.2473 | 0.1144 | 0.6252 |
+| Random Forest R. | 0.3076 | 0.1751 | 0.4262 |
+
+**Table 3:** XGBoost and Random-Forest-Regressors Test Evaluation metrics
+
+As observed in table 3, XGBoost regressor performed significantly better when evaluating with the test dataset. This comparison enables us to pick up the model to be used during the deployment stage.  
 
 ## Results Analysis 
 
@@ -56,7 +67,7 @@ We can observe that the best r2_score obtained when implementing the XRGBoost Re
 
 ## Conclusions
 
-This study is an attempt to understand the main Agri-food activities related to the increased trend in average temperature globally and possibly, disentangle potential insights that enable us to better formulate policies and technical-based insights that ultimately contribute to reducing the impacts of human activities on global warming. By the implementation of ML-based algorithms, such as XGBoost regressor, we might forecast and identify the activities that mainly contribute to the increased average temperature with a variance explanation of around 63%. However, further research is needed regarding socio-environmental factors that contribute to Global Warming, as there is still some unknown variation when implementing this type of approach. 
+This study is an attempt to understand the main Agri-food activities related to the increased trend in average temperature globally and possibly, disentangle potential insights that enable us to better formulate policies and technical-based insights that ultimately contribute to reducing the impacts of human activities on global warming. By the implementation of ML-based algorithms, such as XGBoost and Random Forest regressors, we might forecast and identify the activities that mainly contribute to the increased average temperature with a variance explanation of around 63% and 43%, respectively. However, further research is needed regarding socio-environmental factors that contribute to Global Warming, as there is still some unknown variation when implementing this type of approach. 
 
 
 
