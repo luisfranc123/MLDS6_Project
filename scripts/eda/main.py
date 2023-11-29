@@ -136,3 +136,116 @@ plt.savefig("Correlation_HeatMap.png");
 #Correlation Table:
 total_emission_sources.corr()
 
+pip install --upgrade "kaleido==0.1.*"
+import kaleido
+#Average Temperature distribution by years
+fig = px.box(df, x = 'Year', y = 'Average Temperature °C', color = 'Year',
+             color_discrete_sequence = px.colors.sequential.Electric,
+             title = '<b> Average Temperature distribution by years')
+fig.show()
+fig.write_image("AverageTemp_dist_by_years.png");
+
+#Correlation between Emissions and Average Temperature:
+#Total Population:
+#Total population seems to play a key role in total emissions
+df['total_population'] = df['Total Population - Female'] + df['Total Population - Male']
+# Assign Continent:
+#Note: This task was assigned to ChatGPT to speed up the continent classification process
+continent_mapping = {
+    'Africa': ['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi', 'Cabo Verde', 'Cameroon', 'Central African Republic', 'Chad', 'Comoros', 'Congo', 'Côte d\'Ivoire', 'Djibouti', 'Egypt', 'Equatorial Guinea', 'Eritrea', 'Eswatini', 'Ethiopia', 'Gabon', 'Gambia', 'Ghana', 'Guinea', 'Guinea-Bissau', 'Kenya', 'Lesotho', 'Liberia', 'Libya', 'Madagascar', 'Malawi', 'Mali', 'Mauritania', 'Mauritius', 'Morocco', 'Mozambique', 'Namibia', 'Niger', 'Nigeria', 'Rwanda', 'São Tomé and Príncipe', 'Senegal', 'Seychelles', 'Sierra Leone', 'Somalia', 'South Africa', 'South Sudan', 'Sudan', 'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe'],
+    'Asia': ['Afghanistan', 'Armenia', 'Azerbaijan', 'Bahrain', 'Bangladesh', 'Bhutan', 'Brunei', 'Cambodia', 'China', 'Cyprus', 'Georgia', 'India', 'Indonesia', 'Iran', 'Iraq', 'Israel', 'Japan', 'Jordan', 'Kazakhstan', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Lebanon', 'Malaysia', 'Maldives', 'Mongolia', 'Myanmar', 'Nepal', 'North Korea', 'Oman', 'Pakistan', 'Palestine', 'Philippines', 'Qatar', 'Russia', 'Saudi Arabia', 'Singapore', 'South Korea', 'Sri Lanka', 'Syria', 'Taiwan', 'Tajikistan', 'Thailand', 'Timor-Leste', 'Turkey', 'Turkmenistan', 'United Arab Emirates', 'Uzbekistan', 'Vietnam', 'Yemen'],
+    'Europe': ['Albania', 'Andorra', 'Austria', 'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria', 'Croatia', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland', 'Italy', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Malta', 'Moldova', 'Monaco', 'Montenegro', 'Netherlands', 'North Macedonia', 'Norway', 'Poland', 'Portugal', 'Romania', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'Ukraine', 'United Kingdom', 'Vatican City'],
+    'North America': ['Antigua and Barbuda', 'Bahamas', 'Barbados', 'Belize', 'Canada', 'Costa Rica', 'Cuba', 'Dominica', 'Dominican Republic', 'El Salvador', 'Grenada', 'Guatemala', 'Haiti', 'Honduras', 'Jamaica', 'Mexico', 'Nicaragua', 'Panama', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent and the Grenadines', 'Trinidad and Tobago', 'United States'],
+    'Oceania': ['Australia', 'Fiji', 'Kiribati', 'Marshall Islands', 'Micronesia', 'Nauru', 'New Zealand', 'Palau', 'Papua New Guinea', 'Samoa', 'Solomon Islands', 'Tonga', 'Tuvalu', 'Vanuatu'],
+    'South America': ['Argentina', 'Bolivia', 'Brazil', 'Chile', 'Colombia', 'Ecuador', 'Guyana', 'Paraguay', 'Peru', 'Suriname', 'Uruguay', 'Venezuela']
+}
+
+#Function to assign to each country its correspondent continent
+def assign_continent(country):
+  for continent, countries in continent_mapping.items():
+    if country in countries:
+      return continent
+  return None
+#Apply the function assign_continent to df:
+df['continent'] = df['Area'].apply(assign_continent)
+
+#Plot: CO2 Emissions & Temperature - Population
+fig_2 = px.scatter(df, df['Average Temperature °C'], df['total_emission'],
+           size = 'total_population',
+           title = '<b>CO2 Emissions and Temperature - Population',
+           template = 'plotly_dark', color = 'continent')
+fig_2.write_image("CO2_Emissions_Temp_Pop.png");
+#Correlation
+correlation = df.groupby(['Year']).agg({'total_emission': 'sum',
+                                        'Average Temperature °C': 'mean',
+                                        'total_population': 'sum'})
+correlation.corr()
+###Conclusion: Here, we can observe a significant correlation between Average Temperature, total population, and total emission. 
+"""
+                   total_emission 	Average Temperature °C 	total_population
+total_emission 	         1.000000                  0.90552          0.981828
+Average Temperature °C 	 0.905520 	               1.00000 	        0.912050
+total_population 	       0.981828 	               0.91205 	        1.000000
+"""
+#Scatter plot - Temperature & CO2 Emissions - Global Relation:
+
+fig_3 = px.scatter(correlation.reset_index(),
+           x = 'total_emission',
+           y = 'Average Temperature °C',
+           size = 'total_population',
+           color = 'Year',
+           title = '<b>Temperature & CO2 Emissions - Global Relation',
+           template = 'plotly_dark')
+fig_3.write_image("Temperature_CO2_GlobalRelation.png")
+
+#Emissions per year per country:
+def country_emission(df, year, length):
+  df = df.copy()
+  #Establish the year in which we want to make the comparisson
+  plot = df.loc[df['Year'] == year]
+  #Descending order by total_emission
+  plot = plot.sort_values(by = 'total_emission', ascending = True).tail(length)
+  colors = plt.cm.get_cmap('viridis', len(plot))
+  plt.figure(figsize = (12, 16))
+  plt.barh(plot['Area'], plot['total_emission'],
+           color = colors(range(len(plot))))
+  plt.title(f'CO2 Emission by top {length} country in {year}')
+  plt.xlabel('CO2 Emission in kilotones')
+  plt.savefig(f"CO2_Emissions_Top{length}_{year}.png")
+  plt.show();
+
+#Plot: Top 30 countries with the highest total emissions in 2020
+country_emission(df, 2020, 30)
+
+#Emissions per year per country per capita:
+df['emission_per_capita'] = df['total_emission']/df['total_population']
+
+def country_emission_per_capita(df, year, length):
+  df = df.copy()
+  #Establish the year in which we want to make the comparisson and
+  #filter small islands by population
+  plot = df.loc[(df['Year'] == year) & (df['total_population'] > 800000)]
+  #Descending order by total_emission
+  plot = plot.sort_values(by = 'emission_per_capita', ascending = True).tail(length)
+  colors = plt.cm.get_cmap('viridis', len(plot))
+  plt.figure(figsize = (12, 16))
+  plt.barh(plot['Area'], plot['emission_per_capita'],
+           color = colors(range(len(plot))))
+  plt.title(f'CO2 Emission by top {length} country in {year} per Capita')
+  plt.xlabel('CO2 Emission in kilotones/inhabitant')
+  plt.savefig(f"CO2_Emissions_Top{length}_{year}_per_capita.png")
+  plt.show();
+
+#Plot: Top 30 countries with the highest total emissions per capita in 2020
+country_emission_per_capita(df, 2020, 30)
+
+total_emission_sources['continent'] = df['continent']
+#Sns plot: Correlation between Explanatory Variables and the Target Variable (Avg. Temperature)
+sns_plot = sns.pairplot(total_emission_sources, vars = ['total_fire_emissions', 'total_industrial_emissions',
+       'total_cultivation_emissions', 'Agrifood Systems Waste Disposal',
+       'Food Household Consumption', 'Average Temperature °C'],
+             y_vars = 'Average Temperature °C', hue = 'continent')
+plt.show()
+sns_plot.figure.savefig("Correlation_ExplanatoryVar_Target_Variable.png")
+
+
