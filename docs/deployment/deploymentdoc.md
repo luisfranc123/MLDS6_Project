@@ -112,11 +112,13 @@
   To have a better visualization of the models' comparison, we can click on the comparison button to obtain the following visualization: 
   
 
+
 <img src = "https://drive.google.com/uc?export=view&id=1jOOhcW1o569XIobnhBr4m5J7e2nbF_HN" width="80%">
 
 
   Finally, we then select the best model and put it in **`production`**:
   
+
 
 <img src = "https://drive.google.com/uc?export=view&id=167vHDZbeeKhIIb8zPNVRFWKCb7BY9gZ5" width="80%">
 
