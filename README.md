@@ -1,4 +1,4 @@
-# Applied Project Machine Learning and Data Science (MLDS)_ Universidad Nacional de Colombia
+# Applied Project in Machine Learning and Data Science (MLDS)_ Universidad Nacional de Colombia
 
 This project template contains the main stages of an applied project in ML. The current study aims to implement an ML-based approach to predict the increase of average temperature globally due to distinct agro-industrial activities.  
 
