@@ -2,15 +2,13 @@
 requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
-[project]
+[Agro-industrial Activities Effects on Average Increased of Temperature Globally]
 name = "nombre_paquete"
 version = "0.1.0"
-authors = [{name = "autor1", email = "correo@correo.com"}]
-description = "Descripción del proyecto"
+authors = [{name = "Luis Francisco Riaño", email = "luisfranc123@gmail.com"}]
+description = "Implementation and evaluation of a Machine Learning algorithm to predict the average increased in temperature due to different afro-industrial activities"
 requires-python = ">3.8"
-dependencies = [
-    "numpy"
-]
+dependencies = ["pandas", "scikit-learn", "xgboost", "numpy"]
 
 [tool.setuptools.packages.find]
 where = ["src/"]
