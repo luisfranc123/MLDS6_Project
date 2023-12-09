@@ -2,11 +2,11 @@
 
 ## Name of the Project
 
-Agricultural Effects on Atmospheric CO2 Emissions  
+Agro-industrial Activities Effects on Atmospheric CO2 Emissions  
 
 ## Project Objective
 
-The aim of the present applied project is to explore the effects of distinct agricultural activities on CO2 emissions by implementing ML-based approaches to forecasting an increase in average temperature across different geographic places around the world, given the widely-known greenhouse effects of CO2 in the atmosphere.   
+The present applied project aims to explore the effects of distinct agricultural activities on CO2 emissions by implementing ML-based approaches to forecasting an increase in average temperature across different geographic places around the world, given the widely known greenhouse effects of CO2 in the atmosphere.   
 The dataset used during this applied project has been constructed by merging and reprocessing up to a dozen individual datasets from the Food and Agriculture Organization (FAO) and data from the Intergovernmental Panel on Climate Change (IPCC). For more information visit: [*Kaggle*: https://www.kaggle.com/datasets/alessandrolobello/agri-food-co2-emission-dataset-forecasting-ml/data]. 
 
 ## Project Scope
@@ -56,7 +56,7 @@ The dataset used during this applied project has been constructed by merging and
 
 ## Methodology
 
-We will implement the Cross Industry Standard Process for Data Mining (CRISP-DM) methodology, which is a widely used implementation for Machine Learning projects that enable us to predefine each of the working stages within the applied project.
+We will implement the Cross Industry Standard Process for Data Mining (CRISP-DM) methodology, which is a widely used implementation for Machine Learning projects that allows us to predefine each of the stages within the applied project.
 
 
 
