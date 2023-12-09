@@ -1,4 +1,4 @@
-from agro_ind import regressor_impputer, replace_missing, split_data
+from agro_ind.preprocess import regressor_impputer, replace_missing, split_data
 
 num_features = [col for col in df.columns if df[col].dtypes in ['int64', 'float64']]
 cat_features = [col for col in df.columns if df[col].dtypes in ['object']]
