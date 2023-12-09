@@ -2,7 +2,7 @@
 
 ## Name of the Project
 
-Agro-industrial Activities Effects on Atmospheric CO2 Emissions  
+Agro-industrial Activities Effects on Average Increased of Temperature Globally  
 
 ## Project Objective
 
